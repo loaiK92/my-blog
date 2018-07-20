@@ -1,0 +1,44 @@
+extends layout.pug
+mixin atricle1(data)
+            div(class="article article-page")
+                  .article-header
+                        h5 By #{data[0].author}
+                        small #{moment(data[0].createdOn).format('MMMM Do YYYY _ h:mm a')}
+                  .article-title
+                        h2(class="articleId" data-artid=`${data[0].id}`) #{data[0].title}
+                  .article-body
+                        img(src= `${data[0].image}`, alt="some pics")
+                        p !{data[0].text}
+                  .article-footer
+                        h3 Category : 
+                        each category in data[0].categories
+                              li 
+                                    a(href=`../category/${category.id}`) 
+                                          span #{category.name}
+                  h5 
+                        a(href=`/0`) Back Home
+                  
+block container
+      .container1
+            .articles
+                  +atricle1(artData1)
+                  .comments
+                        h3 Add a comment
+                        form(id="addCommForm", method="post")
+                              input(type="text", id="name", placeholder="NAME" required)
+                              textarea(cols="30", rows="4", id="comment", name="comment", placeholder="YOUR COMMENT", required)
+                              button(type="submit", id="submitComment") SUBMIT
+                  .oldComments
+                        h3(style="text-align: center;") Comments
+                        each item in comments
+                              .theComment.cf
+                                    h3 #{item.name}
+                                    .small
+                                          small #{moment(item.createdOn).format('MMMM Do YYYY, h:mm a')}
+                                          if item.updatedOn
+                                                small(style={'padding-left':'15px'}) Edited on : "#{moment(item.updatedOn).format('MMMM Do YYYY, h:mm a')}"
+                                          else
+                                                small 
+                                    p #{item.comment}
+                                    button(class="deleteComm commentBtn" data-comment-delete=`${item.id}`) &#10005;
+                                    button(class="editComm commentBtn" data-comment-edit=`${item.id}`) &#9997;

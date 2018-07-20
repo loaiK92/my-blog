@@ -1,0 +1,73 @@
+mixin header(...items)
+      header
+            .logo
+                  a(href="/0")
+                        img(src="https://picsum.photos/150/100")
+            nav
+                  ul
+                        each item in items
+                              li
+                                    a(href="/0")=item
+
+mixin atricle(data)
+      each item in data
+            .article(style={background:`rgba(55, 199, 243, 0.05)`})
+                  .article-title
+                        h2 
+                              a(href=`../article/${item.id}`) 
+                                    if item.title.length <= 25 
+                                          | #{item.title}
+                                    else 
+                                          | #{item.title.substring(0, 25)}...
+                  .article-body
+                        p.text #{item.text.substring(0, 100)} ...
+                  .article-footer
+                        h5
+                              a(href=`../article/${item.id}`) Read More
+
+mixin categories(data)
+      ul.categories
+            h2 Categories
+            a(href="../category/categories")
+                  li - All Categories
+            each item in data
+                  a(href=`../category/${item.id}`)
+                        li - #{item.name}
+
+doctype html
+html
+      head
+            meta(charset="UTF-8")
+            meta(http-equiv="X-UA-Compatible", content="ie=edge")
+            title &#128366; My Blog
+            link(rel="stylesheet"   href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css")
+            block cssLink
+                  link(rel="styleSheet" href="../css/style.css" type="text/css")
+      body
+            .header
+                  h2
+                        a(href="/0") My Blog
+                  nav
+                        ul
+                              a(href='/addArticle/create-form')
+                                    li Add New Article 
+            section.main
+                  block container
+                  
+                  block side
+                        aside 
+                              +categories(catData)
+                              .top
+                                    h2 Add New Article
+                                    button(onclick=`location.href='/addArticle/create-form'`) ADD ARTICLE
+                              
+
+            footer
+                  p &copy; 2018 Created By 
+                        a(href="https://loai.herokuapp.com") Loai
+      
+      block scripts
+            script(src="http://code.jquery.com/jquery-3.3.1.js")
+            script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js")
+            script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js")
+            script(src="../js/main.js")

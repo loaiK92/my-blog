@@ -1,0 +1,9 @@
+extends layout
+block container
+      .container1
+            .articles
+                  +atricle(artData)
+            .buttons
+                  button(onclick=`location.href='/${thisP-1}'` disabled= pState) ➾
+                  button(onclick=`location.href='/${thisP+1}'` disabled= nState) ➾ 
+

@@ -1,0 +1,22 @@
+extends layout.pug
+block cssLink
+      link(rel="styleSheet" href="../css/style.css" type="text/css")
+block container
+      .container2
+            form(id="addArtForm",name="articleData", action="/addArticle/create-form/submit", enctype="multipart/form-data", method="post")
+                  h1 Add Your Article
+                  input(id="author",name="author", type="text", placeholder="Author",, required)
+                  input(id="title",name="title", type="text", placeholder="Title", required)
+                  textarea(id="article",name="article", cols="30", rows="10", placeholder="Article", required)
+                  select(name="selection")
+                        - var i = 1
+                        each item in catData
+                              option(value=`${item.id}`, name=`category-${i++}`) #{item.name}
+                  input#upload-input(type='file', name='image', multiple='multiple', required)
+                  button(id="submit",name="submit", type="submit") Submit
+            button(id="cancel", onclick=`location.href='../0'`) Cancel
+block side
+block scripts
+            script(src="http://code.jquery.com/jquery-3.3.1.js")
+            script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js")
+            script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js")
