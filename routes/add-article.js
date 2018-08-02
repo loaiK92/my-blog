@@ -12,7 +12,13 @@ const articleImageStorage = multer.diskStorage({
     cb(null, "./public/images");
   },
   filename: function(req, file, cb) {
-    cb(null, new Date().toISOString().replace(/:/g, "-") + file.originalname);
+    cb(
+      null,
+      new Date()
+        .toISOString()
+        .replace(/:/g, "-")
+        .replace(/./g, "-") + file.originalname
+    );
   }
 });
 
