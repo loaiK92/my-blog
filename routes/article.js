@@ -19,14 +19,12 @@ Router.get("/:id", (req, res, next) => {
     .then(data => {
       Category.find().then(catData => {
         Comment.find({ articleID: req.params.id }).then(comment => {
-          res
-            .status(200)
-            .render("article", {
-              artData1: data,
-              catData: catData,
-              comments: comment,
-              moment: moment
-            });
+          res.status(200).render("article", {
+            artData1: data,
+            catData: catData,
+            comments: comment,
+            moment: moment
+          });
         });
       });
     });

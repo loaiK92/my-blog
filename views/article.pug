@@ -8,7 +8,8 @@ mixin atricle1(data)
                         h2(class="articleId" data-artid=`${data[0].id}`) #{data[0].title}
                   .article-body
                         img(src= `${data[0].image}`, alt="some pics")
-                        p !{data[0].text}
+                        -const text = data[0].text
+                        p !{text.replace(/\n/g, "<br/>")}
                   .article-footer
                         h3 Category : 
                         each category in data[0].categories
