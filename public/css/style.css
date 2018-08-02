@@ -261,23 +261,28 @@ li {
   color: #000;
   text-transform: capitalize;
   font-style: italic;
+  transition: all 0.2s linear;
 }
 
 .article-title {
   width: 100%;
   padding-bottom: 2%;
+  transition: all 0.2s linear;
 }
 
 .article-title h2 {
   font-weight: bold;
+  transition: all 0.2s linear;
 }
 .article-title a {
   color: #000;
+  transition: all 0.2s linear;
 }
 
 .article #homeImg {
   width: 200px;
   margin-bottom: 3%;
+  transition: all 0.2s linear;
 }
 
 .article p {
@@ -286,14 +291,17 @@ li {
   text-align: left;
   font-size: 1.2em;
   text-align: start;
+  transition: all 0.2s linear;
 }
 .article p.text {
   height: 100px;
+  transition: all 0.2s linear;
 }
 
 .article-footer {
   padding-top: 3%;
   color: #fff;
+  transition: all 0.2s linear;
 }
 
 .article-footer h5 a {
@@ -301,6 +309,7 @@ li {
   padding: 5px 10px;
   color: #000;
   box-shadow: -1px 1px 6px #999, 1px 0px 6px #999;
+  transition: all 0.2s linear;
 }
 
 .buttons {
