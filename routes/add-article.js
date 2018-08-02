@@ -17,7 +17,7 @@ const articleImageStorage = multer.diskStorage({
       new Date()
         .toISOString()
         .replace(/:/g, "-")
-        .replace(/./g, "-") + file.originalname
+        .replace(/\./g, "-") + file.originalname
     );
   }
 });
