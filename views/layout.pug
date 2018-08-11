@@ -29,7 +29,7 @@ mixin categories(data)
       ul.categories
             h2 Categories
             a(href="../category/categories")
-                  li - All Categories
+                  li(style="text-align: center;  font-size: 1.3em;") All Categories
             each item in data
                   a(href=`../category/${item.id}`)
                         li - #{item.name}
@@ -50,7 +50,9 @@ html
                   nav
                         ul
                               a(href='/addArticle/create-form')
-                                    li Add New Article 
+                                    li New Article 
+                              a(href='/add-category/newCategory')
+                                    li New Category 
             section.main
                   block container
                   
@@ -58,9 +60,12 @@ html
                         aside 
                               +categories(catData)
                               .top
+                                    h2 Add New Category
+                                    button(onclick=`location.href='/add-category/newCategory'`) ADD CATEGORY
+                              .top(style="margin-top: 5%;")
                                     h2 Add New Article
                                     button(onclick=`location.href='/addArticle/create-form'`) ADD ARTICLE
-                              
+                                                           
 
             footer
                   p &copy; 2018 Created By 

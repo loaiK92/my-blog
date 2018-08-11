@@ -16,6 +16,11 @@ block container
                   button(id="submit",name="submit", type="submit") Submit
             button(id="cancel", onclick=`location.href='../0'`) Cancel
 block side
+      aside
+            +categories(catData)
+            .top
+                  h2 Add New Category
+                  button(onclick=`location.href='/add-category/newCategory'`) ADD CATEGORY
 block scripts
             script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")
             script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js")

@@ -1,0 +1,20 @@
+extends layout.pug
+//- block cssLink
+      link(rel="styleSheet" href="../css/style.css" type="text/css")
+block container
+      .container2
+            form(id="addArtForm",name="categoryData", action="/add-category/newCategory/submit", method="post")
+                  h1 Add New Category
+                  input(id="author",name="category", type="text", placeholder="Category Name", required, style="margin: 6% 0;")
+                  button(id="submit",name="submit", type="submit") Submit
+            button(id="cancel", onclick=`location.href='../0'`) Cancel
+block side
+      aside
+            +categories(catData)
+            .top
+                  h2 Add New Article
+                  button(onclick=`location.href='/addArticle/create-form'`) ADD ARTICLE
+//- block scripts
+            script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")
+            script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js")
+            script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js")

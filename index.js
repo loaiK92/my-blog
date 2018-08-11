@@ -20,11 +20,13 @@ const indexRouter = require("./routes/indexRoute");
 const categoryRouter = require("./routes/category");
 const articleRouter = require("./routes/article");
 const addArticleRouter = require("./routes/add-article");
+const addCategory = require("./routes/add-category");
 
 app.use("/", indexRouter);
 app.use("/category", categoryRouter);
 app.use("/article", articleRouter);
 app.use("/addArticle", addArticleRouter);
+app.use("/add-category", addCategory);
 
 //mongoose
 const db = mongoose.connection;
