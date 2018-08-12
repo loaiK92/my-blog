@@ -10,7 +10,7 @@ Router.use(bodyParser.json());
 
 const articleImageStorage = multer.diskStorage({
   destination: function(req, file, cb) {
-    cb(null, "../public/images");
+    cb(null, "./public/images");
   },
   filename: function(req, file, cb) {
     cb(
@@ -69,7 +69,7 @@ Router.post(
     );
     const article = createArticle(body, fileExtension, imageName);
     article.save();
-    fs.unlink(image.path); // delete image after convert it to base64
+    // fs.unlink(image.path); // delete image after convert it to base64
 
     Category.find().then(data => {
       res.status(200).redirect("../create-form");
