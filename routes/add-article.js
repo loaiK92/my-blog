@@ -10,7 +10,7 @@ Router.use(bodyParser.json());
 
 const articleImageStorage = multer.diskStorage({
   destination: function(req, file, cb) {
-    cb(null, __dirname + "/images");
+    cb(null, __dirname);
   },
   filename: function(req, file, cb) {
     cb(
