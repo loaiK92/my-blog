@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const Article = require("../models/articleModel");
 const Category = require("../models/categoriesModel");
 const fs = require("fs");
-const publicImages = require("../public/images");
+const publicImages = require("./public/images");
 
 Router.use(bodyParser.json());
 
