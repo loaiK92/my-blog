@@ -5,12 +5,13 @@ const bodyParser = require("body-parser");
 const Article = require("../models/articleModel");
 const Category = require("../models/categoriesModel");
 const fs = require("fs");
+const publicImages = require("../public/images");
 
 Router.use(bodyParser.json());
 
 const articleImageStorage = multer.diskStorage({
   destination: function(req, file, cb) {
-    cb(null, "./public/images");
+    cb(null, publicImages);
   },
   filename: function(req, file, cb) {
     cb(
