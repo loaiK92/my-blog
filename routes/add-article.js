@@ -4,6 +4,7 @@ const multer = require("multer");
 const bodyParser = require("body-parser");
 const Article = require("../models/articleModel");
 const Category = require("../models/categoriesModel");
+const fs = require("fs");
 
 Router.use(bodyParser.json());
 
@@ -60,34 +61,32 @@ Router.post(
   (req, res, next) => {
     const body = req.body;
     const image = req.file;
-    const article = createArticle(body, image);
+    const fileExtension = image.mimetype.split("/")[1];
+
+    // convert image to base64
+    const imageName = new Buffer(fs.readFileSync(image.path)).toString(
+      "base64"
+    );
+    const article = createArticle(body, fileExtension, imageName);
     article.save();
+    fs.unlink(image.path); // delete image after convert it to base64
+
     Category.find().then(data => {
       res.status(200).redirect("../create-form");
     });
   }
 );
 
-const createArticle = function(art, imageName) {
+const createArticle = function(art, fileExtension, imageName) {
   return new Article({
     author: art.author,
     title: art.title,
     createdOn: art.date,
-    image: "../images/" + imageName.filename,
+    // image: "../images/" + imageName.filename,
+    image: `data:image/${fileExtension};base64, ${imageName}`,
     categories: art.selection,
     text: art.article
   });
 };
-
-// add category
-
-// const createCategory = function(){
-//       return new Category({
-//             name: 'Marketing'
-//       });
-// };
-
-// const newCategory = createCategory();
-// newCategory.save();
 
 module.exports = Router;

@@ -13,10 +13,11 @@
   "author": "loai",
   "license": "ISC",
   "dependencies": {
-    "bootstrap3-wysihtml5-bower": "^0.3.3",
     "body-parser": "^1.18.3",
+    "bootstrap3-wysihtml5-bower": "^0.3.3",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "fs": "0.0.1-security",
     "moment": "^2.22.1",
     "mongoose": "^5.1.2",
     "morgan": "^1.9.0",
