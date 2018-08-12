@@ -64,12 +64,12 @@ Router.post(
     const fileExtension = image.mimetype.split("/")[1];
 
     // convert image to base64
-    const imageName = new Buffer(fs.readFileSync(image.path)).toString(
+    const imageName = new Buffer.from(fs.readFileSync(image.path)).toString(
       "base64"
     );
     const article = createArticle(body, fileExtension, imageName);
     article.save();
-    // fs.unlink(image.path); // delete image after convert it to base64
+    fs.unlink(image.path); // delete image after convert it to base64
 
     Category.find().then(data => {
       res.status(200).redirect("../create-form");
