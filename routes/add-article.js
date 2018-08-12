@@ -64,12 +64,9 @@ Router.post(
     const fileExtension = image.mimetype.split("/")[1];
 
     // convert image to base64
-    const imageName = new Buffer(fs.readFileSync(image.path)).toString(
-      "base64",
-      (err, data) => {
-        if (err) throw err;
-      }
-    );
+    const imageName = new Buffer(fs.readFileSync(image.path), (err, data) => {
+      if (err) throw err;
+    }).toString("base64");
     const article = createArticle(body, fileExtension, imageName);
     article.save();
     fs.unlink(image.path); // delete image after convert it to base64
