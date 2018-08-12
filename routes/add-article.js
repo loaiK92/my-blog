@@ -63,12 +63,11 @@ Router.post(
     const image = req.file;
     const fileExtension = image.mimetype.split("/")[1];
 
-    function callback(err) {
-      if (err) throw err;
-    }
     // convert image to base64
     const imageName = new Buffer.from(
-      fs.readFileSync(image.path, callback(err))
+      fs.readFileSync(image.path, function callback(err) {
+        if (err) throw err;
+      })
     ).toString("base64");
     const article = createArticle(body, fileExtension, imageName);
     article.save();
